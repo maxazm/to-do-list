@@ -6,19 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrapの読み込み -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 
     <title>To Do List</title>
 </head>
 
-<body>
+<body class="bg-dark text-white">
 
-    <div id="app" class="container-fluid mt-5">
+    <div id="app" class="container-fluid mt-5 d-flex flex-column align-items-center">
+        <h1 class="mb-4">TO DO LIST</h1>
         <div class="input-group mb-3 w-50">
             <input type="text" class="form-control" placeholder="write a task" v-model="toDoText" aria-label="Recipient's username" aria-describedby="button-addon" v-on:change="getText($event); isEmpty()">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon" v-on:click="appendCard()">Create</button>
+            <button class="btn btn-outline-secondary text-white" type="button" id="button-addon" v-on:click="appendCard()">Create</button>
         </div>
         <p v-if="!toDoList.length">まだTO DOリストがありません。</p>
-        <div class="card w-50 my-1" v-for="(toDo,id) in toDoList">
+        <div class="card w-50 my-1 text-black" v-for="(toDo,id) in toDoList">
             <div class="card-body">
                 <h5 class="card-title">TODO {{toDo.id+1}} : {{toDo.text}}</h5>
                 <a href="#" class="btn btn-primary mt-2" v-on:click="deleteCard(id)">Delete</a>
